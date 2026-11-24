@@ -1,0 +1,20 @@
+# Optional: Render blueprint. In Render choose "New > Blueprint" and point it at this repo.
+services:
+  - type: web
+    name: service-hub-api
+    runtime: node
+    rootDir: backend
+    buildCommand: npm ci
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGODB_URI
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: CORS_ORIGINS
+        sync: false
+      - key: APP_TIMEZONE
+        value: Asia/Kolkata
